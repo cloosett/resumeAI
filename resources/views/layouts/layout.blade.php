@@ -65,6 +65,12 @@
                                     Columns</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item-span-mobile">
+                        <a href="#"><span class="menu-item-span">LOGIN</span></a>
+                    </li>
+                    <li class="menu-item-span-mobile">
+                        <a href="#"><span class="menu-item-span">REGISTER</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -74,6 +80,14 @@
                 </li>
                 <li class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
                             class="menu-item-span"><i class="ti-menu"></i></span></a></li>
+            </ul>
+        </div>
+        <div class="dop-nav">
+            <ul>
+                <li><a class="off-canvas-open" href="#"><span class="menu-item-span">LOGIN</span></a>
+                </li>
+                <li><a class="off-canvas-open" href="#"><span class="menu-item-span">REGISTER</span></a>
+                </li>
             </ul>
         </div>
     </div>
