@@ -11,8 +11,8 @@
                     <h1 class="m-b-20"><strong>Створіть своє ідеальне резюме за кілька хвилин</strong></h1>
                     <p class="m-b-40">Дізнайтеся, як ШІ може допомогти вам створити професійне резюме, яке відповідає
                         вашим навичкам та досвіду, <br> збільшуючи шанси на отримання бажаної роботи.</p>
-                    <p><a class="btn btn-lg btn-circle btn-brand" href="#">Розпочати</a><a
-                            class="btn btn-lg btn-circle btn-outline-new-white" href="#">Дізнатися більше</a></p>
+                    <p><a class="btn btn-lg btn-circle btn-brand" href="#start">Розпочати</a>
+                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="#about">Дізнатися більше</a></p>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
     <!-- Hero end-->
 
     <!-- About-->
-    <section class="module divider-bottom">
+    <section id="about" class="module divider-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 m-auto text-center">
@@ -291,7 +291,7 @@
                     <div class="space" data-my="30px" style="margin-top: 30px;"></div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="start">
                 <div class="col-md-12">
                     <p class="text-center"><a class="btn btn-circle btn-outline-brand" href="#">About Us</a></p>
                 </div>
