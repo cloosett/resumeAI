@@ -18,7 +18,9 @@ jobs:
 
       - name: SSH Deploy to server
         run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 21098 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd public_html/ && git pull origin main && composer install && php artisan cache:clear && php artisan optimize && php artisan config:clear && php artisan migrate --force && echo "Deployed!"'
+          echo "Deploy started!"
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 21098 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'cd public_html/ && git pull origin main && php artisan cache:clear && php artisan optimize && php artisan config:clear && php artisan migrate --force && composer install'
+          echo "Deploy finished!"
         env:
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
