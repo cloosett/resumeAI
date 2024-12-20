@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
-Route::get('/test', function () {
-    return view('test');
-})->name('test');
+Route::get('/apiroman', function () {
+    return view('apiroman');
+})->name('apiroman');
 Route::get('/welcome', function () {
     return view('welcome');
 });
