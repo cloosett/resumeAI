@@ -39,7 +39,7 @@
 <header class="header header-transparent">
     <div class="container-fluid">
         <div class="inner-header"><a class="inner-brand"
-                                     href="#">resumeAI</a></div>
+                                     href="{{route('home')}}">resumeAI</a></div>
         <!-- Navigation-->
         <div class="inner-navigation collapse">
             <div class="inner-nav">
@@ -84,9 +84,9 @@
         </div>
         <div class="dop-nav">
             <ul>
-                <li><a class="off-canvas-open" href="#"><span class="menu-item-span">LOGIN</span></a>
+                <li><a class="nav-toggles" href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
                 </li>
-                <li><a class="off-canvas-open" href="#"><span class="menu-item-span">REGISTER</span></a>
+                <li><a class="nav-toggles" href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
                 </li>
             </ul>
         </div>
