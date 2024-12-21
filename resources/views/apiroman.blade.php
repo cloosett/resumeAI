@@ -75,10 +75,10 @@
 <div class="content">
     <h1>Апішки</h1>
     <p>Кароче дивись знизу будуть ендпоінти, на які можеш посилати запити <br><b>ДОМЕН: https://testingfantik.fun/</b><br>
-    <h3>Тобто кінцевий url буде виглядати наприклад так: <br><span style="color: #b21686">https://testingfantik.fun/api/roman</span></h3></p>
+    <h3>Тобто кінцевий url буде виглядати наприклад так: <br><span style="color: #b21686">https://testingfantik.fun/api/books</span></h3></p>
     <ul>
-        <li><a href="#">/api/roman</a></li>
-        <li><a href="#">/api/books</a></li>
+        <li><a href="#">/api/roman - Тестовий просто вертає повідомлення</a></li>
+        <li><a href="#">/api/books - Вертає 100 книг</a></li>
     </ul>
 </div>
 </body>
