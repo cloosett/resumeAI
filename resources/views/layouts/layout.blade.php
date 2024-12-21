@@ -66,10 +66,10 @@
                         </ul>
                     </li>
                     <li class="menu-item-span-mobile">
-                        <a href="#"><span class="menu-item-span">LOGIN</span></a>
+                        <a href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
                     </li>
                     <li class="menu-item-span-mobile">
-                        <a href="#"><span class="menu-item-span">REGISTER</span></a>
+                        <a href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
                     </li>
                 </ul>
             </div>
