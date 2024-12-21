@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-    <!-- Hero-->
     <section class="module-cover parallax text-center fullscreen" data-background="assets/images/module-2.jpg"
              data-overlay="0.6" style="background-image: none; z-index: 0;"
              data-jarallax-original-styles="background-image: url(&quot;assets/images/module-2.jpg&quot;);">
@@ -25,7 +24,6 @@
         </div>
     </section>
     <!-- Hero end-->
-
     <!-- About-->
     <section id="about" class="module divider-bottom">
         <div class="container">
@@ -316,7 +314,7 @@
                         <p>Створіть резюме за допомогою шаблонів. Підходить для базових потреб та особистих
                             проектів.</p>
                     </div>
-                    <div class="pricing-footer"><a class="btn btn-circle btn-brand" href="#">Безкоштовно</a></div>
+                    <div class="pricing-footer"><a class="btn btn-circle btn-brand" href="{{route('create')}}">Безкоштовно</a></div>
                 </div>
                 <div class="col-md-4 pricing-wrapper pricing-popular">
                     <div class="pricing-header">
