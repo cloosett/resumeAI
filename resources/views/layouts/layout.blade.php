@@ -22,8 +22,6 @@
     <link href="{{asset('css/all.css')}}" rel="stylesheet">
     <link href="{{asset('css/plugins.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/template.css')}}" rel="stylesheet">
-    <script type="text/javascript" charset="UTF-8" src="{{asset('js/common.js')}}"></script>
-    <script type="text/javascript" charset="UTF-8" src="{{asset('js/util.js')}}"></script>
 </head>
 <body class="">
 
@@ -96,7 +94,9 @@
 
 <!-- Wrapper-->
 <div class="wrapper">
-    @yield('content')
+    <div id="app">
+        @yield('content')
+    </div>
     <!-- Footer-->
     <footer class="footer">
         <div class="footer-widgets">
@@ -205,7 +205,7 @@
 </div>
 
 <a class="scroll-top" href="#top"><i class="ti-arrow-up"></i></a>
-
+@vite(['resources/js/app.js'])
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>

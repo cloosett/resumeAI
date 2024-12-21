@@ -1,7 +1,8 @@
-import './bootstrap';
+import { createApp } from 'vue'
+import Counter from './components/Counter.vue'
 
-import Alpine from 'alpinejs';
+const app = createApp({});
 
-window.Alpine = Alpine;
+app.component('counter', Counter)
 
-Alpine.start();
+app.mount('#app')
