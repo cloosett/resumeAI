@@ -2245,6 +2245,9 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #505cfd;
   border-color: #505cfd;
+  @media(max-width: 496px){
+      margin-bottom: 15px!important;
+  }
 }
 .btn-brand:hover {
   color: #fff;
