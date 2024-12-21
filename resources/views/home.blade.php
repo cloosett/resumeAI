@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p><img src="a_data/mega-mockup.png" alt=""></p>
+                    <p><img src="{{asset('image/mega-mockup.png')}}" alt=""></p>
                 </div>
             </div>
             <div class="row">
