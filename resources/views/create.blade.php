@@ -1,5 +1,5 @@
 @extends('layouts.layout')
 
 @section('content')
-    <counter></counter>
+    <create-resume></create-resume>
 @endsection

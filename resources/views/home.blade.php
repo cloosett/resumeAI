@@ -108,7 +108,7 @@
     </section>
     <!-- About end-->
 
-    <section class="module bg-gray">
+    <section class="module">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6"><img src="{{asset('image/ipad.png')}}" alt="Resume Builder"></div>
@@ -300,7 +300,7 @@
 
 
     <!-- Clients-->
-    <section class="module bg-gray p-t-0 p-b-40">
+    <section class="module p-t-0 p-b-40">
         <div class="container">
             <div class="space" data-my="-60px" style="margin-top: -60px;"></div>
             <div class="row">
