@@ -63,12 +63,29 @@
                                     Columns</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-span-mobile">
-                        <a href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
-                    </li>
-                    <li class="menu-item-span-mobile">
-                        <a href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
-                    </li>
+                    @if (auth()->check())
+                        @if (Route::currentRouteName() == 'main')
+                            <li class="menu-item-span-mobile">
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <span class="menu-item-span">LOGOUT</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @else
+                            <li class="menu-item-span-mobile">
+                                <a href="{{route('main')}}"><span class="menu-item-span"><i class="ti-user" style="padding-right: 8px"></i>{{ auth()->user()->name }}</span></a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="menu-item-span-mobile">
+                            <a href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
+                        </li>
+                        <li class="menu-item-span-mobile">
+                            <a href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -81,12 +98,23 @@
             </ul>
         </div>
         <div class="dop-nav">
-            <ul>
-                <li><a class="nav-toggles" href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
-                </li>
-                <li><a class="nav-toggles" href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
-                </li>
-            </ul>
+            @if (auth()->check())
+                <ul>
+                    <li>
+                        <a class="nav-toggles" href="{{ route('main') }}">
+                            <span class="menu-item-span"><i class="ti-user" style="padding-right: 8px"></i>{{ auth()->user()->name }}</span>
+                        </a>
+                    </li>
+{{--                    <li><a class="nav-toggles" href="{{route('logout')}}"><span class="menu-item-span">LOGOUT</span></a>--}}
+                </ul>
+            @else
+                <ul>
+                    <li><a class="nav-toggles" href="{{route('login')}}"><span class="menu-item-span">LOGIN</span></a>
+                    </li>
+                    <li><a class="nav-toggles" href="{{route('register')}}"><span class="menu-item-span">REGISTER</span></a>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
 </header>

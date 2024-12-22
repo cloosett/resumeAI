@@ -170,6 +170,12 @@
 <script>
 import axios from 'axios';
 export default {
+    props: {
+        isAuthenticated: {
+            type: Boolean,
+            required: true
+        }
+    },
     data() {
         return {
             currentTab: 1,
@@ -197,9 +203,13 @@ export default {
                 this.currentTab++;
             }
 
-            if (this.currentTab === 4) {
-                const cleanData = JSON.parse(JSON.stringify(this.formData));
-                this.submitResume(cleanData);
+            if (this.currentTab === 4 ) {
+                if(this.isAuthenticated) {
+                    const cleanData = JSON.parse(JSON.stringify(this.formData));
+                    this.submitResume(cleanData);
+                }else{
+                    window.location.href = '/login';
+                }
             }
         },
 
@@ -210,6 +220,7 @@ export default {
         },
         submitResume(data) {
             this.isLoading = true;
+            console.log(data)
             axios.post('/submit-resume', data)
                 .then(response => {
                     this.resume = response.data.enhanced_text.replace(/\n/g, '<br>');
@@ -383,17 +394,18 @@ button.btn-secondary:disabled {
         display: none;
     }
 }
-.inner-navigation.collapse.show {
-    display: none !important;
-}
+
 
 @media (max-width: 992px) {
     .inner-navigation.collapse.show {
         display: block !important;
-        background-color: aliceblue !important;
+        background-color: white !important;
     }
     .inner-navigation.collapsing {
-        background-color: aliceblue !important;
+        background-color: white !important;
+    }
+    .inner-nav > ul > li > a {
+        color:black!important;
     }
 }
 
