@@ -1,5 +1,5 @@
 <template>
-    <section class="module">
+    <section class="module-resume">
         <div class="container" style="margin-top: 0;">
             <h2 class="main-heading">Створи своє ідеальне резюме</h2>
             <p class="subheading">За допомогою штучного інтелекту за 4 простих кроки!</p>
@@ -207,14 +207,14 @@ export default {
 </script>
 
 <style>
-.header + .wrapper .module:first-child {
-    padding-top: 50px!important;
+.module-resume {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    @media(max-width: 768px) {
+        padding-top: 50px;
+    }
 }
-.module {
-    margin-bottom: 75px!important;
-    padding: 0 0 0 0!important;
-}
-/* Загальний стиль для вкладок */
+
 .nav-tabs {
     display: flex;
     justify-content: space-between;
