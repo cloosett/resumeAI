@@ -22,7 +22,9 @@ Route::get('/create', function () {
     return view('create');
 })->name('create');
 
+Route::get('/openai', [App\Http\Controllers\RomanController::class, 'openai'])->name('openai');
 
+Route::post('/submit-resume', [App\Http\Controllers\ResumeController::class, 'submitResume'])->name('submit-resume');
 
 Route::get('/apiroman', function () {
     return view('apiroman');

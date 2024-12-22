@@ -48,7 +48,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ti-facebook"></i></span>
                                             </div>
-                                            <input id="facebook" class="form-control" type="url" placeholder="Посилання на Facebook">
+                                            <input id="facebook" v-model="formData.facebook" class="form-control" type="url" placeholder="Посилання на Facebook">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -57,7 +57,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ti-linkedin"></i></span>
                                             </div>
-                                            <input id="linkedin" class="form-control" type="url" placeholder="Посилання на LinkedIn">
+                                            <input id="linkedin" v-model="formData.linkedin" class="form-control" type="url" placeholder="Посилання на LinkedIn">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -66,7 +66,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ti-twitter"></i></span>
                                             </div>
-                                            <input id="twitter" class="form-control" type="url" placeholder="Посилання на Twitter">
+                                            <input id="twitter" v-model="formData.twitter" class="form-control" type="url" placeholder="Посилання на Twitter">
                                         </div>
                                     </div>
                                 </form>
@@ -85,7 +85,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                         </div>
-                                        <input id="name" class="form-control" type="text" placeholder="Ваше ім'я">
+                                        <input id="name" v-model="formData.name" class="form-control" type="text" placeholder="Ваше ім'я">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -94,7 +94,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-email"></i></span>
                                         </div>
-                                        <input id="email" class="form-control" type="email" placeholder="Ваш email">
+                                        <input id="email" v-model="formData.email" class="form-control" type="email" placeholder="Ваш email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -103,7 +103,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-mobile"></i></span>
                                         </div>
-                                        <input id="phone" class="form-control" type="tel" placeholder="Ваш номер телефону">
+                                        <input id="phone" v-model="formData.phone" class="form-control" type="tel" placeholder="Ваш номер телефону">
                                     </div>
                                 </div>
                             </form>
@@ -122,7 +122,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-book"></i></span>
                                         </div>
-                                        <input id="education" class="form-control" type="text" placeholder="Ваша освіта">
+                                        <input id="education" v-model="formData.education" class="form-control" type="text" placeholder="Ваша освіта">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -131,7 +131,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-layers"></i></span>
                                         </div>
-                                        <textarea id="skills" class="form-control" rows="4" placeholder="Ваші навички"></textarea>
+                                        <textarea id="skills" v-model="formData.skills" class="form-control" rows="4" placeholder="Ваші навички"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -140,7 +140,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ti-world"></i></span>
                                         </div>
-                                        <input id="languages" class="form-control" type="text" placeholder="Мови, якими ви володієте">
+                                        <input id="languages" v-model="formData.languages" class="form-control" type="text" placeholder="Мови, якими ви володієте">
                                     </div>
                                 </div>
                             </form>
@@ -153,7 +153,10 @@
 
                         <!-- Резюме -->
                         <div :class="['tab-pane', { 'show': currentTab === 4, 'active': currentTab === 4 }]">
-                            <p>Тут ви можете переглянути своє готове резюме після заповнення всіх полів.</p>
+                            <div v-if="isLoading" class="spinner-border text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div v-html="resume"></div>
                             <!-- Кнопка Back на останньому етапі -->
                             <button class="btn btn-secondary" @click="previousTab">НАЗАД</button>
                         </div>
@@ -165,10 +168,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
-            currentTab: 1, // Початкова вкладка
+            currentTab: 1,
+            isLoading: false,
+            formData: {
+                facebook: '',
+                linkedin: '',
+                twitter: '',
+                name: '',
+                email: '',
+                phone: '',
+                education: '',
+                skills: '',
+                languages: ''
+            },
+            resume: ''
         };
     },
     methods: {
@@ -179,12 +196,31 @@ export default {
             if (this.currentTab < 4) {
                 this.currentTab++;
             }
+
+            if (this.currentTab === 4) {
+                const cleanData = JSON.parse(JSON.stringify(this.formData));
+                this.submitResume(cleanData);
+            }
         },
+
         previousTab() {
             if (this.currentTab > 1) {
                 this.currentTab--;
             }
         },
+        submitResume(data) {
+            this.isLoading = true;
+            axios.post('/submit-resume', data)
+                .then(response => {
+                    this.resume = response.data.enhanced_text.replace(/\n/g, '<br>');
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
+        }
     },
     mounted() {
         // Налаштування кольору тексту після завантаження компонента
