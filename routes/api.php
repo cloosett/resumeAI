@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RomanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('roman', [App\Http\Controllers\RomanController::class, 'index']);
-Route::get('books', [App\Http\Controllers\RomanController::class, 'books']);
-Route::post('addbooks', [App\Http\Controllers\RomanController::class, 'addBooks']);
+Route::match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
+
