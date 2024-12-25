@@ -15,6 +15,7 @@ class ResumeController extends Controller
     }
     public function submitResume(Request $request)
     {
+        dd($request->all());
         // Отримуємо значення з форми
         $facebook = $request->input('facebook');
         $linkedin = $request->input('linkedin');

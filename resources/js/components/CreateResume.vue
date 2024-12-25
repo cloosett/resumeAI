@@ -61,6 +61,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="linkedin">GitHub</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ti-github"></i></span>
+                                            </div>
+                                            <input id="linkedin" v-model="formData.github" class="form-control" type="url" placeholder="Посилання на GitHub">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="twitter">Twitter</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -105,6 +114,16 @@
                                         </div>
                                         <input id="phone" v-model="formData.phone" class="form-control" type="tel" placeholder="Ваш номер телефону">
                                     </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="avatar" class="font-weight-bold">Ваш аватар</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-primary text-white"><i class="ti-gallery"></i></span>
+                                        </div>
+                                        <input id="avatar" ref="avatar" class="form-control" type="file" @change="handleFileChange">
+                                    </div>
+                                    <small class="form-text text-muted">Оберіть файл зображення для вашого аватару.</small>
                                 </div>
                             </form>
                             <div class="d-flex justify-content-between">
@@ -184,6 +203,7 @@ export default {
                 facebook: '',
                 linkedin: '',
                 twitter: '',
+                github: '',
                 name: '',
                 email: '',
                 phone: '',
@@ -191,12 +211,19 @@ export default {
                 skills: '',
                 languages: ''
             },
+            avatar: null,
             resume: ''
         };
     },
     methods: {
         setTab(tabIndex) {
             this.currentTab = tabIndex;
+        },
+        handleFileChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                this.avatar = file;
+            }
         },
         nextTab() {
             if (this.currentTab < 4) {
@@ -218,10 +245,28 @@ export default {
                 this.currentTab--;
             }
         },
+
         submitResume(data) {
             this.isLoading = true;
-            console.log(data)
-            axios.post('/submit-resume', data)
+            console.log(data);
+
+            const formData = new FormData();
+
+            for (const key in data) {
+                if (data[key]) {
+                    formData.append(key, data[key]);
+                }
+            }
+
+            if (this.avatar) {
+                formData.append('avatar', this.avatar);
+            }
+
+            axios.post('/submit-resume', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
                 .then(response => {
                     this.resume = response.data.enhanced_text.replace(/\n/g, '<br>');
                 })
