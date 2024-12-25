@@ -19,6 +19,7 @@ class BookResource extends JsonResource
             'title' => $this->title,
             'author' => $this->author,
             'year' => $this->year,
+            'description' => $this->description ?? 'Немає опису',
             'genre' => $this->genre,
         ];
     }

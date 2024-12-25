@@ -15,33 +15,34 @@ class RomanController extends Controller
         return response()->json(['message' => 'Hello World!']);
     }
 
-    public function books()
+    public function handleBooks(Request $request, OpenAIService $openAIService)
     {
-        $books = Book::all();
-        return BookResource::collection($books);
-    }
+        // Для GET запиту
+        if ($request->isMethod('get')) {
+            $books = Book::all();
+            return BookResource::collection($books);
+        }
 
-    public function addBooks(Request $request, OpenAIService $openAIService)
-    {
-        $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'year' => 'required'
-        ]);
+        // Для POST запиту
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'title' => 'required',
+                'author' => 'required',
+                'year' => 'required'
+            ]);
 
-        $book = Book::create([
-            'title' => $request->title,
-            'author' => $request->author,
-            'year' => $request->year,
-        ]);
+            $book = Book::create([
+                'title' => $request->title,
+                'author' => $request->author,
+                'year' => $request->year,
+            ]);
 
-        $description = $openAIService->roman($request->title);
-        $book->description = $description;
-        $book->save();
+            $description = $openAIService->roman($request->title);
+            $book->description = $description;
+            $book->save();
 
-        return response()->json([
-            'description' => $description
-        ]);
+            return BookResource::make($book);
+        }
     }
 
 }
