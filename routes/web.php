@@ -26,6 +26,7 @@ Route::get('/openai', [App\Http\Controllers\RomanController::class, 'openai'])->
 
 Route::get('/main', [App\Http\Controllers\MainController::class, 'main'])->name('main');
 
+Route::get('/faq', [App\Http\Controllers\MainController::class, 'faq'])->name('faq');
 
 Route::post('/submit-resume', [App\Http\Controllers\ResumeController::class, 'submitResume'])->name('submit-resume');
 

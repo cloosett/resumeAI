@@ -63,6 +63,8 @@
                                     Columns</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item"><a href="{{route('faq')}}"><span class="menu-item-span">FAQ</span></a>
+                    </li>
                     @if (auth()->check())
                         @if (Route::currentRouteName() == 'main')
                             <li class="menu-item-span-mobile">
@@ -234,6 +236,7 @@
 
 <a class="scroll-top" href="#top"><i class="ti-arrow-up"></i></a>
 @vite(['resources/js/app.js'])
+<script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
