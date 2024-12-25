@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('roman', [App\Http\Controllers\RomanController::class, 'index']);
-Route::match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
+Route::middleware('auth_api')->get('roman', [App\Http\Controllers\RomanController::class, 'index']);
+Route::middleware('auth_api')->match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
 
