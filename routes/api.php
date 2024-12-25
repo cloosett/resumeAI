@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('roman', [App\Http\Controllers\RomanController::class, 'index']);
 Route::get('books', [App\Http\Controllers\RomanController::class, 'books']);
+Route::post('addbooks', [App\Http\Controllers\RomanController::class, 'addBooks']);

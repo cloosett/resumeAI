@@ -9,4 +9,8 @@ class MainController extends Controller
     public function main() {
         return view('main');
     }
+
+    public function faq() {
+        return view('faq');
+    }
 }
