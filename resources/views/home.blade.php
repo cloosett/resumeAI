@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-    <section class="module-cover parallax text-center fullscreen" data-background="assets/images/module-2.jpg"
+    <section class="module-cover parallax text-center fullscreen" data-background="{{asset('image/module-2.jpg')}}"
              data-overlay="0.6" style="background-image: none; z-index: 0;"
-             data-jarallax-original-styles="background-image: url(&quot;assets/images/module-2.jpg&quot;);">
+             data-jarallax-original-styles="background-image: {{asset('image/module-2.jpg')}};">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -20,7 +20,7 @@
             style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100;"
             id="jarallax-container-0">
             <div
-                style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(&quot;https://offsetcode.com/themes/boomerang/1.3.1/assets/images/module-2.jpg&quot;); position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div>
+                style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url({{asset('image/module-2.jpg')}}); position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div>
         </div>
     </section>
     <!-- Hero end-->
