@@ -10,21 +10,21 @@
                         <div class="row">
                             <div class="col-md-4 text-center">
                                 <div class="profile-picture mb-2">
-                                    <img src="{{ auth()->user()->profile_picture ?? asset('image/default-user.jpg') }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
+                                    <img src="{{ asset('storage/' . auth()->user()->resume->profile_picture) }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
                                 </div>
                             </div>
                             <div class="col-md-8 text-center">
-                                <h3>{{ auth()->user()->name }}</h3>
-                                <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                                <h3>{{ auth()->user()->resume->name }}</h3>
+                                <p><strong>Email:</strong> {{ auth()->user()->resume->email }}</p>
 
                                 <!-- Phone -->
                                 <p><strong>Телефон:</strong>
-                                    {{ auth()->user()->phone ?? 'Не вказано' }}
+                                    {{ auth()->user()->resume->phone ?? 'Не вказано' }}
                                 </p>
 
                                 <!-- Location -->
                                 <p><strong>Локація:</strong>
-                                    {{ auth()->user()->location ?? 'Не вказано' }}
+                                    {{ auth()->user()->resume->location ?? 'Не вказано' }}
                                 </p>
                             </div>
                         </div>
@@ -36,28 +36,14 @@
                             <div class="col-md-6">
                                 <h4>Навички</h4>
                                 <p>
-                                @if(empty(auth()->user()->skills))
-                                    <p>Не вказано</p>
-                                @else
-                                    <ul>
-                                        @foreach(auth()->user()->skills as $skill)
-                                            <li>{{ $skill }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
+                                    {{ auth()->user()->resume->skills ?? 'Не вказано' }}
                                 </p>
                             </div>
                             <div class="col-md-6">
                                 <h4>Освіта</h4>
-                                @if(empty(auth()->user()->education))
-                                    <p>Не вказано</p>
-                                @else
-                                    <ul>
-                                        @foreach(auth()->user()->education as $education)
-                                            <li>{{ $education }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
+                                <p>
+                                    {{ auth()->user()->resume->education ?? 'Не вказано' }}
+                                </p>
                             </div>
                         </div>
 
@@ -71,8 +57,8 @@
                                 <ul>
                                     <li>
                                         <strong>Facebook:</strong>
-                                        @if(auth()->user()->facebook)
-                                            <a href="{{ auth()->user()->facebook }}" target="_blank" class="btn btn-facebook">Переглянути</a>
+                                        @if(auth()->user()->resume->facebook)
+                                            <a href="{{ auth()->user()->resume->facebook }}" target="_blank" class="btn btn-facebook">Переглянути</a>
                                         @else
                                             <span> Не вказано</span>
                                         @endif
@@ -80,8 +66,8 @@
 
                                     <li>
                                         <strong>LinkedIn:</strong>
-                                        @if(auth()->user()->linkedin)
-                                            <a href="{{ auth()->user()->linkedin }}" target="_blank" class="btn btn-linkedin">Переглянути</a>
+                                        @if(auth()->user()->resume->linkedin)
+                                            <a href="{{ auth()->user()->resume->linkedin }}" target="_blank" class="btn btn-linkedin">Переглянути</a>
                                         @else
                                             <span> Не вказано</span>
                                         @endif
@@ -89,8 +75,8 @@
 
                                     <li>
                                         <strong>Twitter:</strong>
-                                        @if(auth()->user()->twitter)
-                                            <a href="{{ auth()->user()->twitter }}" target="_blank" class="btn btn-twitter">Переглянути</a>
+                                        @if(auth()->user()->resume->twitter)
+                                            <a href="{{ auth()->user()->resume->twitter }}" target="_blank" class="btn btn-twitter">Переглянути</a>
                                         @else
                                             <span> Не вказано</span>
                                         @endif
@@ -101,13 +87,7 @@
                             <div class="col-md-6">
                                 <h4>Мови</h4>
                                 <p>
-                                    @if(auth()->user()->languages)
-                                        @foreach(auth()->user()->languages as $language)
-                                            <span>{{ $language }}</span>
-                                        @endforeach
-                                    @else
-                                        <span>Не вказано</span>
-                                    @endif
+                                    {{ auth()->user()->resume->languages ?? 'Не вказано' }}
                                 </p>
                             </div>
                         </div>

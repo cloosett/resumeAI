@@ -162,6 +162,15 @@
                                         <input id="languages" v-model="formData.languages" class="form-control" type="text" placeholder="Мови, якими ви володієте">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="location">Локація</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ti-world"></i></span>
+                                        </div>
+                                        <input id="location" v-model="formData.location" class="form-control" type="text" placeholder="Ваша локація">
+                                    </div>
+                                </div>
                             </form>
                             <!-- Кнопки Back та Next -->
                             <div class="d-flex justify-content-between">
@@ -209,16 +218,14 @@ export default {
                 phone: '',
                 education: '',
                 skills: '',
-                languages: ''
+                languages: '',
+                location: ''
             },
             avatar: null,
             resume: ''
         };
     },
     methods: {
-        setTab(tabIndex) {
-            this.currentTab = tabIndex;
-        },
         handleFileChange(event) {
             const file = event.target.files[0];
             if (file) {
