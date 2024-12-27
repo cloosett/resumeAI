@@ -6,23 +6,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="profile-card" style="margin-top: 18%;">
-                        <!-- User Info -->
                         <div class="row">
                             <div class="col-md-4 text-center">
                                 <div class="profile-picture mb-2">
-                                    <img src="{{ asset('storage/' . auth()->user()->resume->profile_picture) }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
+                                    @if(auth()->user() && auth()->user()->resume && auth()->user()->resume->profile_picture == null)
+                                        <img src="{{ asset('image/default-user.jpg') }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
+                                    @elseif(auth()->user() && auth()->user()->resume && auth()->user()->resume->profile_picture)
+                                        <img src="{{ asset('storage/' . auth()->user()->resume->profile_picture) }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
+                                    @else
+                                        <img src="{{ asset('image/default-user.jpg') }}" width="150" height="150" alt="Profile Picture" class="img-fluid rounded-circle">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-8 text-center">
                                 <h3>{{ auth()->user()->resume->name }}</h3>
                                 <p><strong>Email:</strong> {{ auth()->user()->resume->email }}</p>
 
-                                <!-- Phone -->
                                 <p><strong>Телефон:</strong>
                                     {{ auth()->user()->resume->phone ?? 'Не вказано' }}
                                 </p>
 
-                                <!-- Location -->
                                 <p><strong>Локація:</strong>
                                     {{ auth()->user()->resume->location ?? 'Не вказано' }}
                                 </p>
@@ -31,7 +34,6 @@
 
                         <hr>
 
-                        <!-- Skills & Education -->
                         <div class="row">
                             <div class="col-md-6">
                                 <h4>Навички</h4>
@@ -49,7 +51,6 @@
 
                         <hr>
 
-                        <!-- Social Media -->
                         <div class="row">
                             <div class="col-md-6">
                                 <h4>Соціальні мережі</h4>
@@ -92,7 +93,6 @@
                             </div>
                         </div>
 
-                        <!-- Edit Profile Button -->
                         <div class="text-center" style="margin: 100px 0 100px 0;">
                             <a href="{{ route('profile.edit') }}" class="btn btn-primary">Редагувати профіль</a>
                         </div>

@@ -17,7 +17,6 @@
                     <div id="faq">
                         <h5>FAQ - Часто задавані питання</h5>
 
-                        <!-- Питання 1 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-1" aria-expanded="false" aria-controls="faq-1">1. Як працює ResumeAI?</h6>
                             <div id="faq-1" class="collapse">
@@ -25,7 +24,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 2 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-2" aria-expanded="false" aria-controls="faq-2">2. Чи безпечно використовувати ResumeAI для створення резюме?</h6>
                             <div id="faq-2" class="collapse">
@@ -33,7 +31,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 3 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-3" aria-expanded="false" aria-controls="faq-3">3. Які функції пропонує ResumeAI?</h6>
                             <div id="faq-3" class="collapse">
@@ -47,7 +44,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 4 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-4" aria-expanded="false" aria-controls="faq-4">4. Чи можна зберігати та редагувати своє резюме?</h6>
                             <div id="faq-4" class="collapse">
@@ -55,7 +51,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 5 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-5" aria-expanded="false" aria-controls="faq-5">5. Як можна змінити або оновити своє резюме?</h6>
                             <div id="faq-5" class="collapse">
@@ -63,7 +58,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 6 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-6" aria-expanded="false" aria-controls="faq-6">6. Чи є безкоштовний доступ до ResumeAI?</h6>
                             <div id="faq-6" class="collapse">
@@ -71,7 +65,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 7 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-7" aria-expanded="false" aria-controls="faq-7">7. Чи можна використовувати ResumeAI для різних типів резюме (наприклад, для студентів, професіоналів і т.д.)?</h6>
                             <div id="faq-7" class="collapse">
@@ -79,7 +72,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 8 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-8" aria-expanded="false" aria-controls="faq-8">8. Що робити, якщо я забув пароль?</h6>
                             <div id="faq-8" class="collapse">
@@ -87,7 +79,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 9 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-9" aria-expanded="false" aria-controls="faq-9">9. Як звернутися до підтримки?</h6>
                             <div id="faq-9" class="collapse">
@@ -95,7 +86,6 @@
                             </div>
                         </div>
 
-                        <!-- Питання 10 -->
                         <div class="mb-3">
                             <h6 class="faq-question" data-toggle="collapse" data-target="#faq-10" aria-expanded="false" aria-controls="faq-10">10. Як працює алгоритм оптимізації резюме для роботів-сканерів?</h6>
                             <div id="faq-10" class="collapse">
