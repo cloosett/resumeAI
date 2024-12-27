@@ -16,7 +16,7 @@ class ResumeController extends Controller
     }
     public function submitResume(Request $request)
     {
-        // Валідація (розкоментуйте, якщо потрібно)
+
         // $validated = $request->validate([
         //    'facebook' => 'nullable|url',
         //    'linkedin' => 'nullable|url',
@@ -30,7 +30,6 @@ class ResumeController extends Controller
         //    'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         // ]);
 
-        // Отримуємо дані з запиту
         $facebook = $request->input('facebook');
         $linkedin = $request->input('linkedin');
         $twitter = $request->input('twitter');
@@ -44,7 +43,6 @@ class ResumeController extends Controller
 
         $text = "Резюме кандидата:\n";
 
-        // Формуємо текст резюме
         if ($name) $text .= "Ім'я: $name\n";
         if ($email) $text .= "Email: $email\n";
         if ($phone) $text .= "Телефон: $phone\n";
@@ -56,20 +54,16 @@ class ResumeController extends Controller
         if ($linkedin) $text .= "LinkedIn: $linkedin\n";
         if ($twitter) $text .= "Twitter: $twitter\n";
 
-        // Отримуємо покращений текст за допомогою OpenAI
         $enhancedText = $this->openAIService->openai($text);
         if ($enhancedText) {
-            // Якщо є файл аватарки, зберігаємо його
             if ($request->hasFile('avatar')) {
                 $profilePicture = $request->file('avatar');
                 $profilePicturePath = $profilePicture->store('profile_pictures', 'public');
             }
 
-            // Перевіряємо, чи вже є резюме для цього користувача
             $resume = Resume::where('user_id', auth()->user()->id)->first();
 
             if ($resume) {
-                // Якщо резюме вже існує, оновлюємо його
                 $resume->update([
                     'name' => $name,
                     'email' => $email,
@@ -85,7 +79,6 @@ class ResumeController extends Controller
                     'resume' => $enhancedText,
                 ]);
             } else {
-                // Якщо резюме не існує, створюємо нове
                 $resume = Resume::create([
                     'name' => $name,
                     'email' => $email,
@@ -103,7 +96,6 @@ class ResumeController extends Controller
                 ]);
             }
 
-            // Повертаємо покращений текст і дані резюме
             return response()->json(['enhanced_text' => $enhancedText, 'resume' => $resume]);
         }
 

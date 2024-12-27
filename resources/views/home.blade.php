@@ -23,8 +23,7 @@
                 style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url({{asset('image/module-2.jpg')}}); position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div>
         </div>
     </section>
-    <!-- Hero end-->
-    <!-- About-->
+
     <section id="about" class="module divider-bottom">
         <div class="container">
             <div class="row">
@@ -106,7 +105,6 @@
             </div>
         </div>
     </section>
-    <!-- About end-->
 
     <section class="module">
         <div class="container">
@@ -153,7 +151,6 @@
     </section>
 
 
-    <!-- Team-->
     <section class="module">
         <div class="container">
             <div class="row">
@@ -296,10 +293,7 @@
             </div>
         </div>
     </section>
-    <!-- Team end-->
 
-
-    <!-- Clients-->
     <section class="module p-t-0 p-b-40">
         <div class="container">
             <div class="space" data-my="-60px" style="margin-top: -60px;"></div>
@@ -344,9 +338,7 @@
         </div>
     </section>
 
-    <!-- Clients end-->
 
-    <!-- Counters-->
     <section class="module bg-gray p-b-0">
         <div class="container">
             <div class="row">
@@ -393,9 +385,7 @@
             </div>
         </div>
     </section>
-    <!-- Counters end-->
 
-    <!-- Image-->
     <section class="module no-gutters p-0">
         <div class="container-fluid">
             <div class="row">
@@ -403,5 +393,4 @@
             </div>
         </div>
     </section>
-    <!-- Image end-->
 @endsection
