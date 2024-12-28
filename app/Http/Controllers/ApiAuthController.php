@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserRomanResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,13 +27,7 @@ class ApiAuthController extends Controller
             ], 500);
         }
 
-        // Створення токену
-        $token = $user->createToken('Personal Access Token')->plainTextToken;
-
-        return response()->json([
-            'message' => 'User registered successfully',
-            'token' => $token,
-        ]);
+        return UserRomanResource::make($user)->resolve();
     }
 
 
@@ -48,7 +43,6 @@ class ApiAuthController extends Controller
             $token = $user->createToken('Personal Access Token')->plainTextToken;
 
             return response()->json([
-                'message' => 'Login successful',
                 'token' => $token,
             ]);
         }
