@@ -3,17 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BookResource;
+use App\Http\Resources\UserRomanResource;
 use App\Models\Book;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class RomanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(['message' => 'profile']);
+        $unhashedtoken = $request->bearerToken();
+        $token = explode('|', $unhashedtoken)[1];
+
+        if (!$token) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $personalAccessToken = PersonalAccessToken::where('token', hash('sha256', $token))->first();
+
+        if (!$personalAccessToken) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $user = $personalAccessToken->tokenable;
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        return UserRomanResource::make($user)->resolve();
     }
+
 
     public function handleBooks(Request $request, OpenAIService $openAIService)
     {
