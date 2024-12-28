@@ -12,18 +12,21 @@ class ApiAuthController extends Controller
 
     public function register(Request $request)
     {
-//        $request->validate([
-//            'name' => 'required|string|max:255',
-//            'email' => 'required|string|email|max:255|unique:users',
-//            'password' => 'required|string|min:8|confirmed',
-//        ]);
-
+        // Створення користувача без валідації
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
+        // Перевірка, чи успішно створений користувач
+        if (! $user) {
+            return response()->json([
+                'message' => 'User registration failed',
+            ], 500);
+        }
+
+        // Створення токену
         $token = $user->createToken('Personal Access Token')->plainTextToken;
 
         return response()->json([
@@ -31,6 +34,7 @@ class ApiAuthController extends Controller
             'token' => $token,
         ]);
     }
+
 
     public function login(Request $request)
     {
@@ -50,5 +54,16 @@ class ApiAuthController extends Controller
         }
 
         return response()->json(['error' => 'Invalid credentials'], 401);
+    }
+
+    public function logout(Request $request)
+    {
+        // Видалення токену з сесії користувача
+        $request->user()->tokens->each(function ($token) {
+            $token->delete();
+        });
+
+        // Повертаємо відповідь, що користувач вийшов з системи
+        return response()->json(['message' => 'Successfully logged out']);
     }
 }
