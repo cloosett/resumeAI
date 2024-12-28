@@ -12,7 +12,7 @@ class RomanController extends Controller
 {
     public function index()
     {
-        return response()->json(['message' => 'Hello World!']);
+        return response()->json(['message' => 'profile']);
     }
 
     public function handleBooks(Request $request, OpenAIService $openAIService)

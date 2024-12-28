@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth_api')->get('roman', [App\Http\Controllers\RomanController::class, 'index']);
-Route::middleware('auth_api')->match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
+Route::post('login', [App\Http\Controllers\ApiAuthController::class, 'login']);
+Route::post('register', [App\Http\Controllers\ApiAuthController::class, 'register']);
 
+Route::middleware('auth:sanctum')->get('roman', [App\Http\Controllers\RomanController::class, 'index']);
+Route::middleware('auth_api')->match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
