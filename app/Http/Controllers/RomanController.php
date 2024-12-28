@@ -17,13 +17,11 @@ class RomanController extends Controller
 
     public function handleBooks(Request $request, OpenAIService $openAIService)
     {
-        // Для GET запиту
         if ($request->isMethod('get')) {
-            $books = Book::all();
+            $books = Book::paginate(10);
             return BookResource::collection($books);
         }
 
-        // Для POST запиту
         if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required',
