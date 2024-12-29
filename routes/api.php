@@ -14,10 +14,3 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::post('login', [App\Http\Controllers\ApiAuthController::class, 'login']);
-Route::post('register', [App\Http\Controllers\ApiAuthController::class, 'register']);
-Route::middleware('auth:sanctum')->post('logout', [App\Http\Controllers\ApiAuthController::class, 'logout']);
-
-Route::middleware('auth:sanctum')->get('user', [App\Http\Controllers\RomanController::class, 'index']);
-Route::middleware('auth:sanctum')->match(['get', 'post'], 'books', [RomanController::class, 'handleBooks']);
