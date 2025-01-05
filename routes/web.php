@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('download', [App\Http\Controllers\PdfController::class, 'download'])->name('download');
+
 Route::get('/', function () {
     return view('home');
 })->name('home');

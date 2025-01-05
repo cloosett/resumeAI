@@ -10,6 +10,16 @@ class Resume extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'linkedin', 'twitter', 'facebook', 'education', 'skills', 'languages', 'profile_picture', 'user_id'
+        'name',
+        'email',
+        'phone',
+        'linkedin',
+        'twitter',
+        'facebook',
+        'education',
+        'skills',
+        'languages',
+        'profile_picture',
+        'user_id'
     ];
 }
