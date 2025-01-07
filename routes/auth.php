@@ -8,10 +8,20 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('guest')->group(function () {
+
+    Route::get('login/google', function () {
+        return Socialite::driver('google')->stateless()->with(['prompt' => 'select_account'])->redirect();
+    })->name('auth.google');
+
+    Route::get('callback', [SocialAuthController::class, 'authGoogle'])
+    ->name('auth.googlecallback');
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 

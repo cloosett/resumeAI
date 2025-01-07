@@ -26,6 +26,9 @@
                             <div class="form-group">
                                 <button class="btn btn-block btn-round btn-brand" type="submit">Sign Up</button>
                             </div>
+                            <div class="social">
+                                <a href="{{route('auth.google')}}"><img src="{{asset('image/google.png')}}" alt="google icon" width="16" height="16"></a>
+                            </div>
                         </form>
                     </div>
                     <div class="m-b-20">
