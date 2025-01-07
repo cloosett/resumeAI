@@ -19,8 +19,8 @@
                                 </div>
                             </div>
                             <div class="col-md-8 text-center">
-                                <h3>{{ auth()->user()->resume->name }}</h3>
-                                <p><strong>Email:</strong> {{ auth()->user()->resume->email }}</p>
+                                <h3>{{ auth()->user()->resume->name ?? 'Не вказано' }}</h3>
+                                <p><strong>Email:</strong> {{ auth()->user()->resume->email ?? 'Не вказано' }}</p>
 
                                 <p><strong>Телефон:</strong>
                                     {{ auth()->user()->resume->phone ?? 'Не вказано' }}
@@ -58,16 +58,15 @@
                                 <ul>
                                     <li>
                                         <strong>Facebook:</strong>
-                                        @if(auth()->user()->resume->facebook)
+                                        @if(auth()->user()->resume && auth()->user()->resume->facebook)
                                             <a href="{{ auth()->user()->resume->facebook }}" target="_blank" class="btn btn-facebook">Переглянути</a>
                                         @else
-                                            <span> Не вказано</span>
+                                            <span>Не вказано</span>
                                         @endif
                                     </li>
-
                                     <li>
                                         <strong>LinkedIn:</strong>
-                                        @if(auth()->user()->resume->linkedin)
+                                        @if(auth()->user()->resume && auth()->user()->resume->linkedin)
                                             <a href="{{ auth()->user()->resume->linkedin }}" target="_blank" class="btn btn-linkedin">Переглянути</a>
                                         @else
                                             <span> Не вказано</span>
@@ -76,7 +75,7 @@
 
                                     <li>
                                         <strong>Twitter:</strong>
-                                        @if(auth()->user()->resume->twitter)
+                                        @if(auth()->user()->resume && auth()->user()->resume->twitter)
                                             <a href="{{ auth()->user()->resume->twitter }}" target="_blank" class="btn btn-twitter">Переглянути</a>
                                         @else
                                             <span> Не вказано</span>

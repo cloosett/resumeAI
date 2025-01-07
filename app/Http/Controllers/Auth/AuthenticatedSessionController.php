@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return response()->json(['message' => 'Unauthorized'], 401);
+        return view('auth.login');
     }
 
     /**
