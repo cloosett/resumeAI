@@ -28,4 +28,26 @@ class SocialAuthController extends Controller
 
         return redirect()->intended('/');
     }
+
+    public function authGitHub()
+    {
+        $gitUser = Socialite::driver('github')->stateless()->user();
+
+        $existingUser = User::where('github_id', $gitUser->getId())->first();
+        if ($existingUser) {
+            auth()->login($existingUser);
+        } else {
+            $newUser = User::create([
+                'name' => $gitUser->name,
+                'email' => $gitUser->getEmail(),
+                'github_id' => $gitUser->getId(),
+                'profile_picture' => $gitUser->avatar,
+                'password' => '',
+            ]);
+
+            auth()->login($newUser);
+        }
+
+        return redirect()->intended('/');
+    }
 }

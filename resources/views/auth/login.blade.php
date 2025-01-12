@@ -27,7 +27,8 @@
                                 <button class="btn btn-block btn-round btn-brand" type="submit">LOG IN</button>
                             </div>
                             <div class="social">
-                                <a href="{{route('auth.google')}}"><img src="{{asset('image/google.png')}}" alt="google icon" width="16" height="16"></a>
+                                <a href="{{route('auth.google')}}" style="padding-right: 10px"><img src="{{asset('image/google.png')}}" alt="google icon" width="16" height="16"></a>
+                                <a href="{{route('auth.github')}}"><img src="{{asset('image/icons8-github.svg')}}" alt="github icon" width="22" height="24"></a>
                             </div>
                         </form>
                     </div>

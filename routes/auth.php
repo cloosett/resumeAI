@@ -22,6 +22,12 @@ Route::middleware('guest')->group(function () {
     Route::get('callback', [SocialAuthController::class, 'authGoogle'])
     ->name('auth.googlecallback');
 
+    Route::get('login/github', function () {
+        return Socialite::driver('github')->stateless()->with(['prompt' => 'select_account'])->redirect();
+    })->name('auth.github');
+
+    Route::get('login/github/callback', [SocialAuthController::class, 'authGitHub']);
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
