@@ -57,12 +57,15 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="menu-item-has-children"><a href="#"><span class="menu-item-span">Shop</span></a>
+                    <li class="menu-item-has-children"><a href="#"><span class="menu-item-span">AI</span></a>
                         <ul class="sub-menu">
                             <li><a href="#">Shop 2
                                     Columns</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item"><a href="{{route('examples')}}"><span class="menu-item-span">Examples</span></a>
+                    <li class="menu-item"><a href="#start"><span class="menu-item-span">Pricing</span></a>
+                    <li class="menu-item"><a href="{{route('blog')}}"><span class="menu-item-span">Blog</span></a>
                     <li class="menu-item"><a href="{{route('faq')}}"><span class="menu-item-span">FAQ</span></a>
                     </li>
                     @if (auth()->check())
