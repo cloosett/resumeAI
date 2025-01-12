@@ -18,15 +18,20 @@ use Laravel\Socialite\Facades\Socialite;
 
 
 
+Route::get('examples', function () {
+    return view('examples');
+})->name('examples');
+
+
+Route::get('blog', function () {
+    return view('blog');
+})->name('blog');
+
 Route::get('download', [App\Http\Controllers\PdfController::class, 'download'])->name('download');
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
-
-Route::get('/create', function () {
-    return view('create');
-})->name('create');
 
 
 Route::get('/main', [App\Http\Controllers\MainController::class, 'main'])->name('main');
@@ -44,6 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/create', function () {
+        return view('create');
+    })->name('create');
 });
 
 require __DIR__.'/auth.php';

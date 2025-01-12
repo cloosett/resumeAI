@@ -8,25 +8,19 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\SocialAuthController;
+use App\Http\Controllers\Auth\SocialAuth\GitHubController;
+use App\Http\Controllers\Auth\SocialAuth\GoogleController;
+use App\Http\Controllers\Auth\SocialAuth\SocialAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('guest')->group(function () {
+    Route::get('login/google', [GoogleController::class, 'redirectTo'])->name('auth.google');
+    Route::get('callback', [GoogleController::class, 'authGoogle'])->name('auth.googlecallback');
 
-    Route::get('login/google', function () {
-        return Socialite::driver('google')->stateless()->with(['prompt' => 'select_account'])->redirect();
-    })->name('auth.google');
-
-    Route::get('callback', [SocialAuthController::class, 'authGoogle'])
-    ->name('auth.googlecallback');
-
-    Route::get('login/github', function () {
-        return Socialite::driver('github')->stateless()->with(['prompt' => 'select_account'])->redirect();
-    })->name('auth.github');
-
-    Route::get('login/github/callback', [SocialAuthController::class, 'authGitHub']);
+    Route::get('login/github', [GitHubController::class, 'redirectTo'])->name('auth.github');
+    Route::get('login/github/callback', [GitHubController::class, 'authGitHub']);
 
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');

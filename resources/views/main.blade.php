@@ -19,8 +19,8 @@
                                 </div>
                             </div>
                             <div class="col-md-8 text-center">
-                                <h3>{{ auth()->user()->resume->name ?? 'Не вказано' }}</h3>
-                                <p><strong>Email:</strong> {{ auth()->user()->resume->email ?? 'Не вказано' }}</p>
+                                <h3>{{ auth()->user()->name ?? 'Не вказано' }}</h3>
+                                <p><strong>Email:</strong> {{ auth()->user()->email ?? 'Не вказано' }}</p>
 
                                 <p><strong>Телефон:</strong>
                                     {{ auth()->user()->resume->phone ?? 'Не вказано' }}
