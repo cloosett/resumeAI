@@ -18,6 +18,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 
 
+Route::get('removebackground', [App\Http\Controllers\RemoveBackgroundController::class, 'index']);
+
+Route::post('remove-background', [App\Http\Controllers\RemoveBackgroundController::class, 'removeBackground'])->name('removebackground');
 Route::get('examples', function () {
     return view('examples');
 })->name('examples');
