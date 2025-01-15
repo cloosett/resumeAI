@@ -46,3 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
     applyStylesBasedOnConditions();
     removePaddingForModuleMobile();
 });
+
+function checkFileUpload() {
+    const fileInput = document.getElementById('file');
+    const statusText = document.getElementById('statusText');
+    const uploadButton = document.getElementById('uploadButton');
+    if (fileInput.files.length > 0) {
+        statusText.textContent = `File selected: ${fileInput.files[0].name}`;
+        statusText.classList.remove('error', 'uploading');
+        statusText.classList.add('uploaded');
+        uploadButton.disabled = false;
+    } else {
+        statusText.textContent = 'No file selected';
+        statusText.classList.remove('uploaded', 'error');
+        statusText.classList.add('uploading');
+        uploadButton.disabled = true;
+    }
+}

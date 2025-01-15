@@ -81,4 +81,83 @@
 .faq-question{
     cursor: pointer!important;
 }
+.inputes {
+    display: none;
+}
+
+.status-message {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#statusText {
+    color: #888;
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+#statusText.uploaded {
+    color: #4d4f50;
+    font-weight: bold;
+}
+
+#statusText.uploading {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+#statusText.error {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+
+.labelFile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;  /* Використовуємо відсоткове значення для адаптивності */
+    max-width: 1200px;  /* Встановлюємо максимальну ширину */
+    height: 500px; /* Початкова висота */
+    border: 2px dashed #ccc;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #404040;
+    margin: 0 auto; /* Центруємо блок */
+}
+
+/* Адаптивність для маленьких екранів */
+@media (max-width: 768px) {
+    .labelFile {
+        width: 90%; /* Збільшуємо ширину для мобільних пристроїв */
+        height: 250px; /* Зменшуємо висоту для мобільних пристроїв */
+        padding: 15px;
+    }
+}
+
+/* Адаптивність для дуже маленьких екранів */
+@media (max-width: 480px) {
+    .labelFile {
+        width: 95%; /* Повна ширина для маленьких екранів */
+        height: 200px; /* Ще менша висота */
+        padding: 10px;
+    }
+}
+@media (max-width: 768px) {
+    .btnupload{
+        margin-top: 20px!important;
+        font-size: 12px!important;
+        padding: 16px 15px!important;
+        background-color: #676767!important;
+        color: white!important;
+        border: none!important;
+        border-radius: 5px!important;
+        cursor: pointer!important;
+    }
+}
+
+
 
