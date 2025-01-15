@@ -236,6 +236,7 @@
 </div>
 
 <a class="scroll-top" href="#top"><i class="ti-arrow-up"></i></a>
+
 @vite(['resources/js/app.js'])
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
