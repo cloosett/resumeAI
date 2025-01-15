@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,29 +18,34 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+Route::get('/language/{locale}', function ($locale){
+    return redirect("/en/");
+})->name('testing');
+
+Route::localized(function () {
+    Route::get('removebackground', [App\Http\Controllers\RemoveBackgroundController::class, 'index'])->name('removebg');
+
+    Route::post('remove-background', [App\Http\Controllers\RemoveBackgroundController::class, 'removeBackground'])->name('removebackground');
+    Route::get('examples', function () {
+        return view('examples');
+    })->name('examples');
 
 
-Route::get('removebackground', [App\Http\Controllers\RemoveBackgroundController::class, 'index']);
+    Route::get('blog', function () {
+        return view('blog');
+    })->name('blog');
 
-Route::post('remove-background', [App\Http\Controllers\RemoveBackgroundController::class, 'removeBackground'])->name('removebackground');
-Route::get('examples', function () {
-    return view('examples');
-})->name('examples');
+    Route::get('download', [App\Http\Controllers\PdfController::class, 'download'])->name('download');
 
-
-Route::get('blog', function () {
-    return view('blog');
-})->name('blog');
-
-Route::get('download', [App\Http\Controllers\PdfController::class, 'download'])->name('download');
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
 
 
-Route::get('/main', [App\Http\Controllers\MainController::class, 'main'])->name('main');
-Route::get('/faq', [App\Http\Controllers\MainController::class, 'faq'])->name('faq');
+    Route::get('/faq', [App\Http\Controllers\MainController::class, 'faq'])->name('faq');
+});
+
+
 
 Route::post('/submit-resume', [App\Http\Controllers\ResumeController::class, 'submitResume'])->name('submit-resume');
 

@@ -114,27 +114,10 @@
             @else
                 <ul>
                     <li>
-                        <a class="nav-toggles" href="{{route('create')}}"><span class="menu-item-span"><button type="button" class="btn btn-primary" style="margin-top: 0!important; border-radius: 10px!important;">Створюй резюме!
-                                <?php
-                                        echo app()->getLocale();?></button></span></a>
+                        <a class="nav-toggles" href="{{route('create')}}"><span class="menu-item-span"><button type="button" class="btn btn-primary" style="margin-top: 0!important; border-radius: 10px!important;">Створюй резюме!</button></span></a>
                     </li>
                 </ul>
             @endif
-        </div>
-    </div>
-    <div class="language-switcher">
-        <button class="language-button">
-            {{ strtoupper(app()->getLocale()) }}
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-        </button>
-        <div class="language-dropdown">
-            @foreach(['uk' => 'Українська', 'en' => 'English', 'de' => 'Deutsch'] as $locale => $language)
-                <a href="{{ route('language.switch', $locale) }}" class="language-option {{ app()->getLocale() == $locale ? 'active' : '' }}">
-                    {{ $language }}
-                </a>
-            @endforeach
         </div>
     </div>
 </header>
