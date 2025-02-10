@@ -93,7 +93,8 @@
                         </div>
 
                         <div class="text-center" style="margin: 100px 0 100px 0;">
-                            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Редагувати профіль</a>
+                            <a href="{{ route('profile.edit') }}" class="btn btn-primary mr-2">Редагувати профіль</a>
+                            <a href="{{ route('2fa.enable') }}" class="btn btn-dark">Додати 2FA</a>
                         </div>
                     </div>
                 </div>

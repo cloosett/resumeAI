@@ -63,3 +63,11 @@ function checkFileUpload() {
         uploadButton.disabled = true;
     }
 }
+
+window.onload = function() {
+    // Якщо є помилки валідації або форма має повідомлення про помилки
+    if (document.querySelectorAll('.is-invalid').length > 0) {
+        // Прокручуємо сторінку до форми
+        document.getElementById('comment').scrollIntoView({ behavior: 'smooth' });
+    }
+};
