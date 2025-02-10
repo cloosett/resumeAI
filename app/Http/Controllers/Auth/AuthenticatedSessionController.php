@@ -28,7 +28,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        if ($request->user()->google2fa_enabled) {
+            return redirect()->route('2fa.confirm');
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
